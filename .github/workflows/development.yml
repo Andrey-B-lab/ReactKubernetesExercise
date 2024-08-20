@@ -136,6 +136,19 @@ jobs:
 ###               Deploy to EC2 using SSH               ###
 ########################################################### 
 
+    - name: List Docker images
+      run: docker images
+
+    - name: Print environment variables
+      run: |
+        echo "ECR_REGISTRY: $ECR_REGISTRY"
+        echo "ECR_REPOSITORY: $ECR_REPOSITORY"
+        echo "IMAGE_TAG: $IMAGE_TAG"
+    
+    - name: Verify Docker image existence
+      run: |
+        docker image inspect $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
     - name: Push Docker image to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
