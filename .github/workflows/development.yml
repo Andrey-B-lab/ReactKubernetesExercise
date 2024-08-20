@@ -142,6 +142,8 @@ jobs:
         ECR_REPOSITORY: counter-service-exercise
         IMAGE_TAG: ${{ steps.next_version.outputs.tag }}
       run: |
+        # Tag the image
+        docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         # Push the specific version tag
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
