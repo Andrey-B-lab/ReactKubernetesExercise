@@ -131,13 +131,10 @@ jobs:
       continue-on-error: false
 
 ###########################################################
-###         PUSH IMAGE TO ECR AND DEPLOY TO EC2         ###
+###                  PUSH IMAGE TO ECR                  ###
 ###     Tag Docker image as "latest" and push to ECR    ###
-###               Deploy to EC2 using SSH               ###
+###                                                     ###
 ########################################################### 
-
-    - name: List Docker images
-      run: docker images
 
     - name: Print environment variables
       run: |
